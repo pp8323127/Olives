@@ -1,0 +1,99 @@
+<?php 
+	$connection = mysql_connect('localhost', 'root', 'admin');
+	mysql_select_db('olives', $connection) or die('Can not connect.');
+	mysql_query("SET NAMES 'utf8'");
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<script src="dropzone.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/dropzone.css" />
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		Dropzone.options.myAwesomeDropzone = { 
+			//url: "upload.php",	//動作位置
+			method: "post",
+			paramName: "file",	//預設檔案屬性為"file"
+			maxFiles: 1,	//最大上傳數量
+			maxFilesize: 10,	//MB 最大檔案限制
+			parallelUploads: 1,	//最大同時上傳數量
+			uploadMultiple: false,	//是否允許Dropzone一次提交多個文件
+			acceptedFiles: "image/*, video/mp4",	//檔案類型
+
+			createImageThumbnails: true,	//縮圖
+			maxThumbnailFilesize: 10,
+			thumbnailWidth: 100,
+			thumbnailHeight: 100,
+
+			addRemoveLinks: true,	//新增刪除按鈕
+
+
+			dictDefaultMessage: "Drop files here to upload",
+			dictFallbackMessage: "Your browser does not support drag'n'drop file uploads.",
+			dictFallbackText: "Please use the fallback form below to upload your files like in the olden days.",
+			dictFileTooBig: "File is too big ({{filesize}}MiB). Max filesize: {{maxFilesize}}MiB.",
+			dictInvalidFileType: "You can't upload files of this type.",
+			dictResponseError: "Server responded with {{statusCode}} code.",
+
+		    dictCancelUpload: "Cancel upload",	//取消上傳的按鈕
+		    dictCancelUploadConfirmation: "Are you sure you want to cancel this upload?",	//取消按鈕的提示訊息
+	      	dictRemoveFile: "Remove",   //移除按鈕上的顯示文字
+      		dictRemoveFileConfirmation: null,  //刪除檔案的提示訊息
+
+
+
+			//使用events監聽，放在init裡面，this.on產生新監聽
+			init: function() {	
+				this.on("removedfile", function(file) {
+					alert(file.name);
+					//var filename = file.name;
+					//document.location="send.php?value="+filename; 
+					
+					//document.myform3.formvar.value = file.name;
+					//document.myform3.submit()
+					//setTimeout("document.myform3.submit()",5000);
+				});
+			}
+
+
+
+		};
+
+
+		//使用events監聽，放在init裡面，this.on產生新監聽
+		Dropzone.options.myAwesomeDropzone = {
+			init: function() {	
+				this.on("Remove", function(file) {
+					alert(file.name);
+					//var filename = file.name;
+				});
+			}
+		};
+
+
+    	
+	</script>
+
+<form name="myform3" action="" method="post">
+<input type="hidden" name="formvar" value="">
+</form>
+
+
+	<form action="upload.php"
+	      class="dropzone"
+	      id="my-awesome-dropzone">
+	</form>
+
+
+<!-- 	      <form action="upload.php" method="post" enctype="multipart/form-data">
+檔案名稱:<input type="file" name="file" id="file" /><br />
+<input type="submit" name="submit" value="上傳檔案" />
+</form> -->
+
+</body>
+</html>

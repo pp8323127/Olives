@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+<div class="slideShow">
+    <ul class="slides">
+        <li class="slide"><img src="images/pic01.jpg" width="900" height="360" /></a></li>
+        <li class="slide"><img src="images/pic02.jpg" width="900" height="360" /></a></li>
+        <li class="slide"><img src="images/pic03.jpg" width="900" height="360" /></a></li>
+        <li class="slide"><img src="images/pic04.jpg" width="900" height="360" /></a></li>
+        <li class="slide"><img src="images/pic05.jpg" width="900" height="360" /></a></li>
+    </ul>
+    <ul class="pager">
+        <li><a href="javascript:void(0);" class="prev">Previous</a></li>
+        <li><a href="javascript:void(0);" class="next">Next</a></li>
+    </ul>
+</div>
+</html>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="https://raw.github.com/appleboy/jquery.slideShow/master/jquery.slideshow.min.js"></script>
+<script>
+(function ($) {
+    $('.slideShow').slideShow({
+        interval: 3,
+        start: 'random',
+        transition: {
+            mode: 'slideshow',
+            speed: 800
+        }
+    });
+})(jQuery);
+</script>
+
+<style type="text/css">
+.slideShow {
+    width: 900px;
+    height: 420px;
+    position: relative;
+    overflow: hidden;
+}
+</style>

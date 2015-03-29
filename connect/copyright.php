@@ -1,0 +1,1 @@
+&copy;Copyright Olives Inc., 2014. All Rights Reserved.
